@@ -1,10 +1,15 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import ImageSlider from "../components/imageSlider";
+import Categories from "../components/Categories";
 
-export default function Body() {
-  return (
-    <View>
-      <Text>Body</Text>
-    </View>
-  );
-}
+const Body = () => (
+  <View>
+    <ImageSlider />
+    <Categories />
+  </View>
+);
+
+const styles = StyleSheet.create({});
+
+export default Body;
