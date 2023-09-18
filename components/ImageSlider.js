@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
     borderColor: "blue",
-    position: "relative",
+    // position: "relative",
   },
   image: {
     width: 415,
@@ -29,17 +29,17 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   movietitle: {
-    fontSize: "48",
+    fontSize: 48,
     fontWeight: "bold",
     color: "white",
   },
   movieimdb: {
     paddingVertical: 10,
     backgroundColor: "yellow",
-    borderRadius: "10",
+    borderRadius: 10,
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: "16",
+    fontSize: 16,
   },
 });
 

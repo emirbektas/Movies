@@ -4,15 +4,13 @@ import { Octicons } from "@expo/vector-icons";
 
 export default function Header() {
   return (
-    <View>
-      <SafeAreaView>
-        <View style={styles.navbar}>
-          <Octicons name="three-bars" size={24} color="black" />
-          <Text style={styles.text}>MOVIE</Text>
-          <Text style={{ fontSize: 24 }}>Sağ</Text>
-        </View>
-      </SafeAreaView>
-    </View>
+    <SafeAreaView>
+      <View style={styles.navbar}>
+        <Octicons name="three-bars" size={24} color="black" />
+        <Text style={styles.text}>MOVIE</Text>
+        <Text style={{ fontSize: 24 }}>Sağ</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
