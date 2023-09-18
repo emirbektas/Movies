@@ -22,13 +22,12 @@ export default function MovieList() {
   return (
     <View style={styles.container}>
       <FlatList
-        style={styles.deneme}
         data={movies}
-        numColumns={3}
+        numColumns={2}
         renderItem={({ item }) => (
-          <View>
+          <View style={styles.card}>
             <Image
-              style={{ width: 50, height: 50 }}
+              style={styles.item}
               source={{
                 uri: `https://www.themoviedb.org/t/p/w500/${item.poster_path}`,
               }}
@@ -44,12 +43,15 @@ export default function MovieList() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
+    // height: 1000,
   },
-  deneme: {
+  card: {
     flex: 1,
+    marginVertical: 20,
+  },
+  item: {
+    marginHorizontal: 1,
+    height: 150,
+    width: 100,
   },
 });
