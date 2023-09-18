@@ -43,7 +43,7 @@ export default function MovieList() {
 
 const styles = StyleSheet.create({
   container: {
-    // height: 1000,
+    flex: 1,
   },
   card: {
     flex: 1,
