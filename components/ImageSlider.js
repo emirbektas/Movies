@@ -1,12 +1,14 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, Pressable } from "react-native";
 
 const ImageSlider = () => (
   <View style={styles.container}>
     <Image source={require("../assets/slide1.jpg")} style={styles.image} />
     <View style={styles.textcontainer}>
       <Text style={styles.movietitle}>Drive</Text>
-      <Text style={styles.movieimdb}>IMBD: 8.6</Text>
+      <Pressable style={styles.imdbBtn}>
+        <Text style={styles.movieimdb}>IMBD: 8.6</Text>
+      </Pressable>
     </View>
   </View>
 );
@@ -34,12 +36,14 @@ const styles = StyleSheet.create({
     color: "white",
   },
   movieimdb: {
-    paddingVertical: 10,
-    backgroundColor: "yellow",
-    borderRadius: 10,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 16,
+  },
+  imdbBtn: {
+    paddingVertical: 8,
+    backgroundColor: "yellow",
+    borderRadius: 6,
   },
 });
 

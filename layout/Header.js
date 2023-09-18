@@ -4,11 +4,11 @@ import { Octicons } from "@expo/vector-icons";
 
 export default function Header() {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, borderWidth: 1, borderColor: "red" }}>
       <View style={styles.navbar}>
-        <Octicons name="three-bars" size={24} color="black" />
+        <Octicons name="three-bars" size={24} color="white" />
         <Text style={styles.text}>MOVIE</Text>
-        <Text style={{ fontSize: 24 }}>Sağ</Text>
+        <Text style={{ fontSize: 24, color: "white" }}>Sağ</Text>
       </View>
     </SafeAreaView>
   );
@@ -18,10 +18,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     fontWeight: "500",
+    color: "white",
   },
   navbar: {
+    flex: 1,
     flexDirection: "row",
-    backgroundColor: "red",
     justifyContent: "space-between",
     padding: 10,
     zIndex: 1,

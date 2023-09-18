@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import Home from "./pages/Home";
 
 export default function App() {
   return (
-    <View style={styles.deneme}>
+    <ScrollView style={styles.container}>
       <Home />
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  deneme: {
+  container: {
     flex: 1,
+    backgroundColor: "#010d22",
   },
 });

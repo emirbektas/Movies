@@ -9,7 +9,7 @@ export default function Home() {
     <View style={{ flex: 1 }}>
       <Header />
       <Body />
-      {/* <Footer /> */}
+      <Footer />
     </View>
   );
 }

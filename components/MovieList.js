@@ -1,6 +1,16 @@
-import { View, Text, Image, FlatList, StyleSheet } from "react-native";
-import React from "react";
-import { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  StyleSheet,
+  Dimensions,
+  Button,
+  Pressable,
+} from "react-native";
+import React, { useState, useEffect } from "react";
+
+const windowWidth = Dimensions.get("window").width;
 
 export default function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -32,10 +42,14 @@ export default function MovieList() {
                 uri: `https://www.themoviedb.org/t/p/w500/${item.poster_path}`,
               }}
             />
-            <Text>{item.title}</Text>
+            <Pressable style={styles.imdb}>
+              <Text>IMBD: {Math.floor(item.vote_average)}</Text>
+            </Pressable>
+            <Text style={styles.movieTitle}>{item.title}</Text>
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.flatListContent}
       />
     </View>
   );
@@ -44,14 +58,35 @@ export default function MovieList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   card: {
-    flex: 1,
-    marginVertical: 20,
+    margin: 10,
+    borderWidth: 1,
+    borderColor: "red",
+    width: (windowWidth - 80) / 2,
+    alignItems: "center",
   },
   item: {
-    marginHorizontal: 1,
-    height: 150,
-    width: 100,
+    height: 200,
+    width: "100%",
+  },
+  movieTitle: {
+    fontSize: 24,
+    marginTop: 5,
+    color: "white",
+    textAlign: "center",
+  },
+  flatListContent: {
+    alignItems: "center",
+  },
+  imdb: {
+    padding: 4,
+    backgroundColor: "yellow",
+    position: "absolute",
+    top: 5,
+    right: 5,
+    borderRadius: 5,
   },
 });
