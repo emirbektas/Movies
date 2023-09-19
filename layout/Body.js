@@ -1,13 +1,11 @@
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import ImageSlider from "../components/ImageSlider";
-import Categories from "../components/Categories";
+import { StyleSheet, View } from "react-native";
 import MovieList from "../components/MovieList";
+import Carousel from "../components/Carousel";
 
 const Body = () => (
   <View style={{ flex: 1 }}>
-    <ImageSlider />
-    {/* <Categories /> */}
+    <Carousel />
     <MovieList />
   </View>
 );
