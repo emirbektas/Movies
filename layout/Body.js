@@ -7,7 +7,7 @@ import MovieList from "../components/MovieList";
 const Body = () => (
   <View style={{ flex: 1 }}>
     <ImageSlider />
-    <Categories />
+    {/* <Categories /> */}
     <MovieList />
   </View>
 );
