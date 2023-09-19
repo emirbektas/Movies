@@ -71,8 +71,9 @@ export default function Footer() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 30,
-    marginVertical: 30,
+    paddingHorizontal: 30,
+    paddingVertical: 30,
+    backgroundColor: "#142036",
   },
   downloadContainer: {
     flex: 1,

@@ -129,8 +129,6 @@ const styles = StyleSheet.create({
   card: {
     margin: 10,
     marginLeft: 25,
-    borderWidth: 1,
-    borderColor: "red",
     width: (windowWidth - 80) / 2,
     flex: 1,
   },
@@ -139,7 +137,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   movieTitle: {
-    fontSize: 24,
+    fontSize: 20,
     marginTop: 5,
     color: "white",
     textAlign: "center",

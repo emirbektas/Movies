@@ -6,27 +6,42 @@ import {
   SafeAreaView,
   StyleSheet,
   Pressable,
+  TouchableOpacity,
+  ScrollView,
 } from "react-native";
+import { useState } from "react";
 
 export default function DetailScreen({ route }) {
   const { movie } = route.params;
+  const [added, setAdded] = useState(false);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View>
-        <Image
-          style={styles.item}
-          source={{
-            uri: `https://www.themoviedb.org/t/p/w500/${movie.poster_path}`,
-          }}
-        />
-        <Pressable style={styles.imdbPoint}>
-          <Text>IMBD: {Math.floor(movie.vote_average)}</Text>
-        </Pressable>
-      </View>
-      <Text style={styles.title}> {movie.title}</Text>
-      <Text style={styles.overview}> {movie.overview}</Text>
-      <Text style={styles.date}>Release Date: {movie.release_date}</Text>
+      <ScrollView>
+        <View>
+          <Image
+            style={styles.item}
+            source={{
+              uri: `https://www.themoviedb.org/t/p/w500/${movie.poster_path}`,
+            }}
+          />
+          <Pressable style={styles.imdbPoint}>
+            <Text>IMBD: {Math.floor(movie.vote_average)}</Text>
+          </Pressable>
+        </View>
+        <Text style={styles.title}> {movie.title}</Text>
+        <Text style={styles.overview}> {movie.overview}</Text>
+        <Text style={styles.date}>Release Date: {movie.release_date}</Text>
+
+        <TouchableOpacity
+          style={styles.listBtn}
+          onPress={() => setAdded(!added)}
+        >
+          <Text style={{ color: "white", textAlign: "center" }}>
+            {added ? "REMOVE FROM LIST" : "ADD TO LIST"}
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -38,7 +53,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   title: {
-    marginVertical: 10,
+    marginVertical: 20,
     color: "white",
     fontWeight: "700",
     fontSize: 30,
@@ -48,6 +63,7 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     fontSize: 20,
+    marginHorizontal: 20,
   },
   imdbPoint: {
     padding: 5,
@@ -60,7 +76,14 @@ const styles = StyleSheet.create({
   date: {
     color: "white",
     textAlign: "center",
-    marginVertical: 10,
+    marginVertical: 15,
     fontSize: 16,
+  },
+  listBtn: {
+    padding: 15,
+    backgroundColor: "#142036",
+    marginHorizontal: 130,
+    marginTop: 20,
+    borderRadius: 10,
   },
 });
