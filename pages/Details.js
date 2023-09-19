@@ -1,10 +1,13 @@
-import { View, Text } from "react-native";
 import React from "react";
+import { Text, SafeAreaView } from "react-native";
 
-export default function Details() {
+export default function DetailScreen({ route }) {
+  const { movie } = route.params;
+
   return (
-    <View>
-      <Text>Details</Text>
-    </View>
+    <SafeAreaView>
+      <Text style={{ color: "white" }}>Title: {movie.title}</Text>
+      <Text style={{ color: "white" }}>Overview: {movie.overview}</Text>
+    </SafeAreaView>
   );
 }

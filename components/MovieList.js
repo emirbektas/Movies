@@ -5,14 +5,15 @@ import {
   FlatList,
   StyleSheet,
   Dimensions,
-  Button,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
-
+import { useNavigation } from "@react-navigation/native";
 const windowWidth = Dimensions.get("window").width;
 
 export default function MovieList() {
+  const navigation = useNavigation();
   const [movies, setMovies] = useState([]);
   const getMovies = () => {
     fetch(
@@ -35,18 +36,22 @@ export default function MovieList() {
         data={movies}
         numColumns={2}
         renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image
-              style={styles.item}
-              source={{
-                uri: `https://www.themoviedb.org/t/p/w500/${item.poster_path}`,
-              }}
-            />
-            <Pressable style={styles.imdb}>
-              <Text>IMBD: {Math.floor(item.vote_average)}</Text>
-            </Pressable>
-            <Text style={styles.movieTitle}>{item.title}</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Details", { movie: item })}
+          >
+            <View style={styles.card}>
+              <Image
+                style={styles.item}
+                source={{
+                  uri: `https://www.themoviedb.org/t/p/w500/${item.poster_path}`,
+                }}
+              />
+              <Pressable style={styles.imdb}>
+                <Text>IMBD: {Math.floor(item.vote_average)}</Text>
+              </Pressable>
+              <Text style={styles.movieTitle}>{item.title}</Text>
+            </View>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.flatListContent}

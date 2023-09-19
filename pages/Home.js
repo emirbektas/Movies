@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { ScrollView } from "react-native-virtualized-view";
 import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
@@ -6,11 +7,11 @@ import Body from "../layout/Body";
 
 export default function Home() {
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <Header />
       <Body />
       <Footer />
-    </View>
+    </ScrollView>
   );
 }
 

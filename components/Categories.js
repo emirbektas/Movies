@@ -42,9 +42,7 @@ export default function Categories() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // flexDirection: "row",
-    // position: "absolute",
+    marginVertical: 10,
   },
   btn: {
     padding: 10,
