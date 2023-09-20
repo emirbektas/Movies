@@ -5,13 +5,10 @@ import {
   Image,
   FlatList,
   StyleSheet,
-  Dimensions,
   TouchableOpacity,
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
-const windowWidth = Dimensions.get("window").width;
 
 export default function MovieList() {
   const navigation = useNavigation();
@@ -59,6 +56,26 @@ export default function MovieList() {
     getMovies();
   }, []);
 
+  const renderItem = ({ item }) => (
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Details", { movie: item })}
+      style={styles.card}
+    >
+      <View style={styles.cardContent}>
+        <Image
+          style={styles.item}
+          source={{
+            uri: `https://www.themoviedb.org/t/p/w500/${item.poster_path}`,
+          }}
+        />
+        <View style={styles.imdb}>
+          <Text>IMDB: {Math.floor(item.vote_average)}</Text>
+        </View>
+        <Text style={styles.movieTitle}>{item.title}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -85,26 +102,13 @@ export default function MovieList() {
       <FlatList
         data={filteredMovies}
         numColumns={2}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Details", { movie: item })}
-          >
-            <View style={styles.card}>
-              <Image
-                style={styles.item}
-                source={{
-                  uri: `https://www.themoviedb.org/t/p/w500/${item.poster_path}`,
-                }}
-              />
-              <View style={styles.imdb}>
-                <Text>IMBD: {Math.floor(item.vote_average)}</Text>
-              </View>
-              <Text style={styles.movieTitle}>{item.title}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.flatListContent}
+        columnWrapperStyle={{
+          justifyContent: "space-between",
+          paddingHorizontal: 10,
+        }}
       />
     </View>
   );
@@ -128,8 +132,9 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 10,
-    marginLeft: 25,
-    width: (windowWidth - 80) / 2,
+    flex: 1,
+  },
+  cardContent: {
     flex: 1,
   },
   item: {
