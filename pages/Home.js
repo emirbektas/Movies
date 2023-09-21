@@ -4,6 +4,7 @@ import React from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import Body from "../layout/Body";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   return (

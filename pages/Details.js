@@ -9,12 +9,22 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToList, removeFromList } from "../redux/listSlice";
 
 export default function DetailScreen({ route }) {
   const { movie } = route.params;
-  const [added, setAdded] = useState(false);
 
+  const list = useSelector((state) => state.list.list);
+  const dispatch = useDispatch();
+
+  const addMovieToList = (item) => {
+    dispatch(addToList(item));
+  };
+  const removeMovieFromList = (item) => {
+    dispatch(removeFromList(item));
+  };
+  console.log(list);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
@@ -33,14 +43,25 @@ export default function DetailScreen({ route }) {
         <Text style={styles.overview}> {movie.overview}</Text>
         <Text style={styles.date}>Release Date: {movie.release_date}</Text>
 
-        <TouchableOpacity
-          style={styles.listBtn}
-          onPress={() => setAdded(!added)}
-        >
-          <Text style={{ color: "white", textAlign: "center" }}>
-            {added ? "REMOVE FROM LIST" : "ADD TO LIST"}
-          </Text>
-        </TouchableOpacity>
+        {list.some((value) => value.id == movie.id) ? (
+          <TouchableOpacity
+            style={styles.listBtn}
+            onPress={() => removeMovieFromList(movie)}
+          >
+            <Text style={{ color: "white", textAlign: "center" }}>
+              REMOVE FROM LIST{" "}
+            </Text>
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            style={styles.listBtn}
+            onPress={() => addMovieToList(movie)}
+          >
+            <Text style={{ color: "white", textAlign: "center" }}>
+              ADD TO LIST
+            </Text>
+          </TouchableOpacity>
+        )}
       </ScrollView>
     </SafeAreaView>
   );

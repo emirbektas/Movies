@@ -6,16 +6,25 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { Octicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const list = useSelector((state) => state.list.list);
   return (
-    <SafeAreaView style={{ flex: 1, borderWidth: 1, borderColor: "red" }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.navbar}>
         <Text style={{ fontSize: 24, color: "white" }}>Sol</Text>
         <Text style={styles.text}>MOVIE</Text>
         <TouchableOpacity>
-          <Octicons name="three-bars" size={24} color="white" />
+          <Entypo name="list" size={24} color="white" />
+
+          {/* Yazdırma işlemi çalışıyor, dropdown ya da drawer ekle */}
+          {/* {list.map((item) => (
+            <View>
+              <Text style={{ color: "white" }}>{item.title}</Text>
+            </View>
+          ))} */}
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -33,6 +42,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 10,
-    zIndex: 1,
   },
 });
