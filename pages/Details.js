@@ -24,7 +24,6 @@ export default function DetailScreen({ route }) {
   const removeMovieFromList = (item) => {
     dispatch(removeFromList(item));
   };
-  console.log(list);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
