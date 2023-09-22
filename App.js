@@ -1,12 +1,13 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { View, StatusBar, SafeAreaView, ScrollView } from "react-native";
+import { View, StatusBar, SafeAreaView } from "react-native";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import store from "./store";
 import { Provider } from "react-redux";
+import WatchList from "./components/WatchList";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -24,6 +25,7 @@ export default function App() {
           >
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Details" component={Details} />
+            <Stack.Screen name="WatchList" component={WatchList} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

@@ -7,24 +7,16 @@ import {
 } from "react-native";
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
-
+import { useNavigation } from "@react-navigation/native";
 export default function Header() {
-  const list = useSelector((state) => state.list.list);
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.navbar}>
         <Text style={{ fontSize: 24, color: "white" }}>Sol</Text>
         <Text style={styles.text}>MOVIE</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("WatchList")}>
           <Entypo name="list" size={24} color="white" />
-
-          {/* Yazdırma işlemi çalışıyor, dropdown ya da drawer ekle */}
-          {/* {list.map((item) => (
-            <View>
-              <Text style={{ color: "white" }}>{item.title}</Text>
-            </View>
-          ))} */}
         </TouchableOpacity>
       </View>
     </SafeAreaView>
