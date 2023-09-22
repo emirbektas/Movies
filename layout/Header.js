@@ -8,12 +8,15 @@ import {
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 export default function Header() {
   const navigation = useNavigation();
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.navbar}>
-        <Text style={{ fontSize: 24, color: "white" }}>Sol</Text>
+        <MaterialCommunityIcons name="movie-open" size={24} color="white" />
         <Text style={styles.text}>MOVIE</Text>
         <TouchableOpacity onPress={() => navigation.navigate("WatchList")}>
           <Entypo name="list" size={24} color="white" />
