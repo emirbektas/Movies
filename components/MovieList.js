@@ -9,23 +9,27 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import i18next from "../services/i18next";
+import { useTranslation } from "react-i18next";
 
 export default function MovieList() {
+  const { t } = useTranslation();
+
   const navigation = useNavigation();
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
 
   const genres = [
-    { value: "", label: "All" },
-    { value: "28", label: "Action" },
-    { value: "35", label: "Comedy" },
-    { value: "27", label: "Horror" },
-    { value: "878", label: "Sci-Fi" },
-    { value: "18", label: "Drama" },
-    { value: "9648", label: "Mystery" },
-    { value: "10749", label: "Romance" },
-    { value: "10402", label: "Musical" },
+    { value: "", label: `${t("all")}` },
+    { value: "28", label: `${t("action")}` },
+    { value: "35", label: `${t("comedy")}` },
+    { value: "27", label: `${t("horror")}` },
+    { value: "878", label: `${t("sci-fi")}` },
+    { value: "18", label: `${t("drama")}` },
+    { value: "9648", label: `${t("mystery")}` },
+    { value: "10749", label: `${t("romance")}` },
+    { value: "10402", label: `${t("musical")}` },
   ];
 
   const getMovies = () => {
