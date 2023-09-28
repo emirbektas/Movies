@@ -11,8 +11,12 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { addToList, removeFromList } from "../redux/listSlice";
+import i18next from "../services/i18next";
+import { useTranslation } from "react-i18next";
 
 export default function DetailScreen({ route }) {
+  const { t } = useTranslation();
+
   const { movie } = route.params;
 
   const list = useSelector((state) => state.list.list);
@@ -40,7 +44,9 @@ export default function DetailScreen({ route }) {
         </View>
         <Text style={styles.title}> {movie.title}</Text>
         <Text style={styles.overview}> {movie.overview}</Text>
-        <Text style={styles.date}>Release Date: {movie.release_date}</Text>
+        <Text style={styles.date}>
+          {t("release-date")}: {movie.release_date}
+        </Text>
 
         {list.some((value) => value.id == movie.id) ? (
           <TouchableOpacity
@@ -48,7 +54,7 @@ export default function DetailScreen({ route }) {
             onPress={() => removeMovieFromList(movie)}
           >
             <Text style={{ color: "white", textAlign: "center" }}>
-              REMOVE FROM LIST{" "}
+              {t("remove-from-list")}
             </Text>
           </TouchableOpacity>
         ) : (
@@ -57,7 +63,7 @@ export default function DetailScreen({ route }) {
             onPress={() => addMovieToList(movie)}
           >
             <Text style={{ color: "white", textAlign: "center" }}>
-              ADD TO LIST
+              {t("add-to-list")}
             </Text>
           </TouchableOpacity>
         )}

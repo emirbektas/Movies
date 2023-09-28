@@ -13,8 +13,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { Swipeable } from "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { removeFromList } from "../redux/listSlice";
+import i18next from "../services/i18next";
+import { useTranslation } from "react-i18next";
 
 export default function WatchList() {
+  const { t } = useTranslation();
+
   const list = useSelector((state) => state.list.list);
   const dispatch = useDispatch();
 
@@ -34,7 +38,7 @@ export default function WatchList() {
           <Animated.Text
             style={{ transform: [{ scale: scale }], color: "white" }}
           >
-            Delete
+            {t("delete")}
           </Animated.Text>
         </View>
       </TouchableOpacity>
@@ -45,7 +49,7 @@ export default function WatchList() {
     <ScrollView style={{ flex: 1 }}>
       <GestureHandlerRootView>
         {list.length === 0 ? (
-          <Text style={styles.emptyListText}>Watchlist is empty.</Text>
+          <Text style={styles.emptyListText}> {t("watchlist-state")}</Text>
         ) : (
           list.map((item) => (
             <Swipeable
@@ -67,7 +71,7 @@ export default function WatchList() {
                     <Text style={styles.date}>{item.release_date}</Text>
                     <Text style={{ color: "white", marginRight: 15 }}>_</Text>
                     <Text style={styles.lang}>
-                      Language: {item.original_language}
+                      {t("language")}: {item.original_language}
                     </Text>
                   </View>
                   <Text numberOfLines={5} style={styles.overview}>
