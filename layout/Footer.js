@@ -1,22 +1,23 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import { FontAwesome5, Entypo } from "@expo/vector-icons";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <View style={styles.container}>
       <View>
-        <Text style={{ color: "white", fontSize: 24 }}>Help</Text>
-        <Text style={{ color: "white", marginTop: 10 }}>
-          Frequently Asked Questions
-        </Text>
+        <Text style={{ color: "white", fontSize: 24 }}>{t("help")}</Text>
+        <Text style={{ color: "white", marginTop: 10 }}>{t("faq")}</Text>
       </View>
 
       <View style={{ marginVertical: 20 }}>
-        <Text style={{ color: "white", fontSize: 24 }}>Legal</Text>
-        <Text style={{ color: "white", marginTop: 10 }}>Copyrigth</Text>
-        <Text style={{ color: "white", marginTop: 5 }}>Privacy Policy</Text>
-        <Text style={{ color: "white", marginTop: 5 }}>Terms of Use</Text>
+        <Text style={{ color: "white", fontSize: 24 }}>{t("legal")}</Text>
+        <Text style={{ color: "white", marginTop: 10 }}>{t("copyright")}</Text>
+        <Text style={{ color: "white", marginTop: 5 }}>{t("privacy")}</Text>
+        <Text style={{ color: "white", marginTop: 5 }}>{t("terms")}</Text>
       </View>
 
       <View style={{ marginBottom: 20 }}>
@@ -28,7 +29,7 @@ export default function Footer() {
             marginBottom: 10,
           }}
         >
-          SOCIALS
+          {t("socials")}
         </Text>
         <View
           style={{
@@ -51,9 +52,7 @@ export default function Footer() {
       />
 
       <View style={styles.downloadContainer}>
-        <Text style={{ color: "white", marginTop: 10 }}>
-          all rights reserved
-        </Text>
+        <Text style={{ color: "white", marginTop: 10 }}>{t("rights")}</Text>
         <Image
           source={require("../assets/app-store.webp")}
           style={styles.downloadLink}
