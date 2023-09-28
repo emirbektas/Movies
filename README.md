@@ -1,6 +1,6 @@
 # Movies App
 
-A movie app where you can see the latest movies and create yourself a watchlist.
+A movie app with multilanguage support, where you can see the latest movies and create yourself a watchlist.
 
 # Screens
 
